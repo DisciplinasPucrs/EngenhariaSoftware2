@@ -1,4 +1,4 @@
-package com.engsoft2.currencyexchangeservice;
+package com.engsoft2.currency_exchange_service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
