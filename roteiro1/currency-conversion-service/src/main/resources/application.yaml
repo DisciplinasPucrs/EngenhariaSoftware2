@@ -1,3 +1,15 @@
 spring:
   application:
     name: currency-conversion-service
+server:
+  port: 8100
+management:
+  server:
+    port: 9100
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "health,metrics"
