@@ -1,4 +1,4 @@
-package com.engsoft2.currencyexchangeservice;
+package com.engsoft2.currency_exchange_service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

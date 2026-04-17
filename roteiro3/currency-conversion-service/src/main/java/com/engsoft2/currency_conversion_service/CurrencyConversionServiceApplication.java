@@ -1,4 +1,4 @@
-package com.engsoft2.currencyconversionservice;
+package com.engsoft2.currency_conversion_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
