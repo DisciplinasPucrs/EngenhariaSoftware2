@@ -15,30 +15,26 @@ spring:
           predicates:
             - Path=/convert/**
           filters:
+            - RewritePath=/convert/?(?<resto>.*), /currency-conversion-feign/$\{resto}
             - name: CircuitBreaker
               args:
                 name: currencyConversionCircuitBreaker
                 fallbackUri: forward:/fallback/currency-conversion
-            - RewritePath=/convert/?(?<resto>.*), /currency-conversion-feign/$\{resto}
 management:
   endpoint:
     health:
       show-details: always
-    gateway:
-      access: read-only
-    circuitbreakers:
-      enabled: true
   endpoints:
     web:
       exposure:
-        include: "health,metrics"
+        include: "health,metrics,circuitbreakers"
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
 logging:
   level:
-    org.springframework.cloud.gateway: TRACE
+    "[org.springframework.cloud.gateway]": TRACE
 resilience4j:
   circuitbreaker:
     configs:
