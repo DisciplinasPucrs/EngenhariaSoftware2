@@ -54,5 +54,21 @@ services:
       - "8761:8761"
     networks:
       - currency-network
+  history:
+    build: history-service
+    image: history
+    ports:
+      - "8120:8120"
+    networks:
+      - currency-network
+    depends_on:
+      - naming-server
+      - rabbitmq
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://naming-server:8761/eureka
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=engsoft2
+      - spring.rabbitmq.password=engsoft2
 networks:
   currency-network:
