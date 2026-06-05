@@ -1,26 +1,15 @@
 server:
-  port: 8765
+  port: 8100
 spring:
   application:
-    name: api-gateway
+    name: currency-conversion-service
   cloud:
-    gateway.server.webflux:
-      discovery:
-        locator:
-          enabled: false
-          lower-case-service-id: true
-      routes:
-        - id: currency-conversion
-          uri: lb://currency-conversion-service
-          predicates:
-            - Path=/convert/**
-          filters:
-            - RewritePath=/convert/?(?<resto>.*), /currency-conversion-feign/$\{resto}
-            - name: CircuitBreaker
-              args:
-                name: currencyConversionCircuitBreaker
-                fallbackUri: forward:/fallback/currency-conversion
+    openfeign:
+      circuitbreaker:
+        enabled: true
 management:
+  server:
+    port: 9100
   endpoint:
     health:
       show-details: always

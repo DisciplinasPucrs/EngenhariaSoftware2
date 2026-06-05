@@ -1,5 +1,5 @@
 #imagem para o processo de build
-FROM eclipse-temurin:21-jdk-alpine AS build
+FROM eclipse-temurin:25-jdk-alpine AS build
 #diretório de trabalho
 WORKDIR /workspace/app
 #copiar arquivos do maven
@@ -15,7 +15,7 @@ COPY src src
 RUN ./mvnw clean install -DskipTests
 
 #imagem para implantação em produção
-FROM eclipse-temurin:21-jre-alpine AS final
+FROM eclipse-temurin:25-jre-alpine AS final
 #diretório de trabalho
 WORKDIR /workspace/app
 #copiar os arquivos para execução no conteiner
