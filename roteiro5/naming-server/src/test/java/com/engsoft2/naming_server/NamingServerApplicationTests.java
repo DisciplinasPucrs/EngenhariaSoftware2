@@ -1,4 +1,4 @@
-package com.ensoft2.namingserver;
+package com.engsoft2.naming_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

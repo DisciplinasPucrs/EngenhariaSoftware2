@@ -1,4 +1,4 @@
-package com.ensoft2.namingserver;
+package com.engsoft2.naming_server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,7 @@
-package com.engsoft2.currencyexchangeservice;
+package com.engsoft2.currency_exchange_service;
 
 import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
