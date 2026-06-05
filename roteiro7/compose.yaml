@@ -1,4 +1,14 @@
 services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=engsoft2
+      - RABBITMQ_DEFAULT_PASS=engsoft2
+    networks:
+      - currency-network
   currency-exchange:
     build: currency-exchange-service
     image: exchange
@@ -19,8 +29,13 @@ services:
       - currency-network
     depends_on:
       - currency-exchange
+      - rabbitmq
     environment:
       - eureka.client.serviceUrl.defaultZone=http://naming-server:8761/eureka
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=engsoft2
+      - spring.rabbitmq.password=engsoft2
   api-gateway:
     build: api-gateway
     image: gateway
