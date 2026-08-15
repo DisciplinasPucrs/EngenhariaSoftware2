@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: centralized-configuration-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/DisciplinasPucrs/springcloudconfig
+          username: ${username}
+          password: ${password}
+server:
+  port: 8888
