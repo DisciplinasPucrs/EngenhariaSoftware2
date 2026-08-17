@@ -47,7 +47,7 @@ public class CurrencyConversionController {
             from, to, quantity,
             currencyExchange.getConversionMultiple(),
             quantity.multiply(currencyExchange.getConversionMultiple()),
-            currencyExchange.getEnvironment());
+            environment.getProperty("local.server.port"));
     }
 
 }
