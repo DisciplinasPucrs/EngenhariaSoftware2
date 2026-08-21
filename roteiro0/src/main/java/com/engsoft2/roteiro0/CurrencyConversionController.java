@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-
 @RestController
 public class CurrencyConversionController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private CurrencyExchangeRepository repository;
     private Environment environment;
-  
+
     public CurrencyConversionController(CurrencyExchangeRepository repository, Environment environment) {
         this.repository = repository;
         this.environment = environment;
@@ -37,9 +36,12 @@ public class CurrencyConversionController {
     @PostMapping("/currency-exchange")
     @ResponseStatus(HttpStatus.CREATED)
     public CurrencyExchange createCurrencyExchange(@RequestBody CurrencyExchange currencyExchange) {
-        logger.info("createCurrencyExchange called with from {} to {}", currencyExchange.getFrom(), currencyExchange.getTo());
-        return repository.save(currencyExchange);
-    }   
+        logger.info("createCurrencyExchange called with from {} to {}", currencyExchange.getFrom(),
+                currencyExchange.getTo());
+        var savedCurrencyExchange = repository.save(currencyExchange);
+        savedCurrencyExchange.setEnvironment(environment.getProperty("local.server.port"));
+        return savedCurrencyExchange;
+    }
 
     private CurrencyExchange getCurrencyExchange(String from, String to) {
         CurrencyExchange currencyExchange = repository.findByFromAndTo(from, to);
@@ -55,11 +57,11 @@ public class CurrencyConversionController {
         logger.info("calculateCurrencyConversion called with from {} to {} with quantity {}", from, to, quantity);
         CurrencyExchange currencyExchange = getCurrencyExchange(from, to);
         return new CurrencyConversion(
-            currencyExchange.getId(),
-            from, to, quantity,
-            currencyExchange.getConversionMultiple(),
-            quantity.multiply(currencyExchange.getConversionMultiple()),
-            environment.getProperty("local.server.port"));
+                currencyExchange.getId(),
+                from, to, quantity,
+                currencyExchange.getConversionMultiple(),
+                quantity.multiply(currencyExchange.getConversionMultiple()),
+                environment.getProperty("local.server.port"));
     }
 
 }
