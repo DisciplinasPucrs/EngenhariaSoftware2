@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.engsoft2</groupId>
 	<artifactId>naming-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>latest</version>
 	<name/>
 	<description/>
 	<url/>
