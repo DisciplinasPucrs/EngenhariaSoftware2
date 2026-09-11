@@ -1,0 +1,33 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway.server.webflux:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      routes:
+        - id: currency-conversion
+          uri: lb://currency-conversion-service
+          predicates:
+            - Path=/convert/**
+          filters:
+            - RewritePath=/convert/?(?<resto>.*), /currency-conversion-feign/$\{resto}
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "health,metrics"
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
