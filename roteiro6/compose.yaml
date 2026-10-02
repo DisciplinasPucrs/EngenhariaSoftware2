@@ -17,6 +17,7 @@ services:
     container_name: conversion_container
     ports:
       - "8100:8100"
+      - "9100:9100"
     networks:
       - currency-network
     depends_on:
