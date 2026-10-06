@@ -1,4 +1,4 @@
-package com.engsoft2.historyservice;
+package com.engsoft2.history_service;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

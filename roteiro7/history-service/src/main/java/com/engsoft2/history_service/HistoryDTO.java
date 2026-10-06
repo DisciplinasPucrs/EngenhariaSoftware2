@@ -1,4 +1,4 @@
-package com.engsoft2.historyservice;
+package com.engsoft2.history_service;
 
 public class HistoryDTO {
     private String from;

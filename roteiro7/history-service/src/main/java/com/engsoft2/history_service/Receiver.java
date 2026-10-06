@@ -1,4 +1,4 @@
-package com.engsoft2.historyservice;
+package com.engsoft2.history_service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

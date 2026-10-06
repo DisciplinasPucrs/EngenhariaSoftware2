@@ -1,4 +1,4 @@
-package com.engsoft2.historyservice;
+package com.engsoft2.history_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

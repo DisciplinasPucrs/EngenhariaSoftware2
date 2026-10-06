@@ -51,6 +51,7 @@ services:
       - currency-network
   rabbitmq:
     image: rabbitmq:management
+    container_name: rabbitmq_container
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -62,6 +63,7 @@ services:
   history:
     build: history-service
     image: history
+    container_name: history_container
     ports:
       - "8120:8120"
     networks:

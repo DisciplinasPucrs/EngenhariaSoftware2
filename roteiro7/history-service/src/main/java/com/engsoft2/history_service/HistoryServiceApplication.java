@@ -1,4 +1,4 @@
-package com.engsoft2.historyservice;
+package com.engsoft2.history_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
