@@ -38,4 +38,4 @@ resilience4j:
         permitted-number-of-calls-in-half-open-state: 3
 auth0:
   domain: "dev-nknjwcnj.us.auth0.com"
-  audience: " https://engsoft2.com/currencyconversionservice"
+  audience: "https://engsoft2.com/currencyconversionservice"

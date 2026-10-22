@@ -18,7 +18,7 @@ public class SecurityConfig {
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/currency-conversion-feign").authenticated()
+                .requestMatchers("/currency-conversion-feign/**").authenticated()
                 .anyRequest().permitAll())
             .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
