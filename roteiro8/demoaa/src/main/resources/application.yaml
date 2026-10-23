@@ -1,3 +1,6 @@
 spring:
   application:
     name: demoaa
+auth0:
+  domain: "dev-nknjwcnj.us.auth0.com"
+  audience: "https://engsoft2.com/alomundo"
